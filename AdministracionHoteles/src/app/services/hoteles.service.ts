@@ -29,6 +29,10 @@ export class HotelesService {
     return this._http.get(this.url + '/buscarHotelPorId/' + id, { headers: headersToken })
   }
 
+  obtenerHotelesDisponibles(nombreHotel: String): Observable<any> {
+    return this._http.post(this.url + '/buscarHotelDisponible', nombreHotel, { headers: this.headersVariable })
+  }
+
   agregarHoteles(modeloHoteles: HotelesModule, token: any): Observable<any> {
     let parametros = JSON.stringify(modeloHoteles)
     let headersToken = this.headersVariable.set('Authorization', token)

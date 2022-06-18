@@ -18,6 +18,7 @@ export class InicioComponent implements OnInit {
   public hotelModelGet: any;
   public token: any;
   public validation: Boolean = true;
+  public contador: Number = 0;
 
   constructor(public _hotelesService: HotelesService, public formBuilder: FormBuilder) {
     this.hotelModelPost = new Hoteles("", "", "", "", "")
@@ -42,12 +43,29 @@ export class InicioComponent implements OnInit {
 
   }
 
+  getHotelDisponible(nombreHotel: String) {
+    this._hotelesService.obtenerHotelesDisponibles(nombreHotel).subscribe({
+      next: (response: any) => {
+        if (response.habitacion == 0) {
+          this.validation = false;
+          return this.contador
+        } else {
+          this.validation = true;
+          console.log(response.habitacion)
+          this.contador = response.habitacion
+          return this.contador
+        }
+      },
+      error: (err) => console.log(err)
+    })
+  }
+
   getHoteles() {
     this._hotelesService.obtenerHoteles().subscribe(
       response => {
         console.log(response)
         console.log('response.hoteles' + response.mensaje)
-        if (response.hoteles != 0) {
+        if (response.mensaje != 0) {
           this.hotelModelGet = response.mensaje
         }
         console.log(this.hotelModelGet)
@@ -60,7 +78,7 @@ export class InicioComponent implements OnInit {
   getHotelesId(idHotel: String) {
     this._hotelesService.obtenerHotelesId(idHotel, this.token).subscribe({
       next: (response: any) => {
-        if (response.empresa == 0) {
+        if (response.mensaje == 0) {
           this.validation = false;
         } else {
           this.validation = true;
@@ -95,7 +113,7 @@ export class InicioComponent implements OnInit {
     this._hotelesService.editarHoteles(this.hotelModelGetId, this.token).subscribe({
       next: (response: any) => {
         console.log(response)
-        if (response.hoteles != 0) {
+        if (response.mensaje != 0) {
           this.hotelModelGet = response.mensaje
         }
       },
