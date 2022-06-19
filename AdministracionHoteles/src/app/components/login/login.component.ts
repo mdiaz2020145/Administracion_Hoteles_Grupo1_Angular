@@ -21,9 +21,39 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getToken(): Promise<any> {
+
+  getToken(){
+    this._usuariosServices.login(this.usuariosModel,"true").subscribe(
+      (response)=>{
+        console.log(response.token);
+        localStorage.setItem("token",response.token)
+
+      },
+      (error)=>{
+        console.log(<any>error)
+      }
+    )
+  }
+
+
+  login(){
+    this._usuariosServices.login(this.usuariosModel).subscribe(
+      (response)=>{
+        this.getToken();
+        localStorage.setItem("identidad",JSON.stringify(response.usuario))
+        console.log(response);
+
+        this._router.navigate(['/inicio'])
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+  /*getToken(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this._usuariosServices.login(this.usuariosModel, "true").subscribe(
+      this._usuariosServices.login(this.usuariosModel,"true").subscribe(
         (response) => {
           localStorage.setItem('token', response.token);
           resolve(response)
@@ -33,7 +63,7 @@ export class LoginComponent implements OnInit {
         }
       )
     })
-  }
+  }*/
 
  /*login() {
     this._usuariosServices.login(this.usuariosModel, "false").subscribe(
