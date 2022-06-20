@@ -43,9 +43,12 @@
     <ng-container>
       <div class="col-12 col-md-6 mt-4 "*ngFor="let hotel of hotelModelGet">
         <div class="card flex-md-row mb-4 shadow-sm h-md-250 bg-color tamaño" *ngIf="validation==true">
-          <div class="card-body d-flex flex-column align-items-start">
-            <div class="disponibilidad">
+          <div class="card-body d-flex flex-column align-items-start" *ngIf=" getHotelDisponible(hotel.nombre)">
+            <div class="disponibilidad" *ngIf="contador != 0" >
                 Disponible
+            </div>
+            <div class="noDisponibilidad" *ngIf="contador >= 0">
+                No disponible
             </div>
             <strong class="d-inline-block mb-2 text-primary" style="font-size:30px">{{hotel.nombre}}</strong>
             <div class="row">
@@ -66,6 +69,14 @@
           <div>
             <h6 class="direccion">{{hotel.pais}}</h6>
             <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/arch" width="300px">
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center" style="height: 90vh"
+          *ngIf="validation === false">
+          <div class="alert alert-danger text-center" role="alert">
+            <h4 class="alert-heading">Lo sentimos</h4>
+            <p>No hay ningun hotel</p>
+            <hr>
           </div>
         </div>
       </div>
