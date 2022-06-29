@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LoginComponent } from './components/login/login.component';
     AppComponent,
     InicioComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    BienvenidaComponent
   ],
   imports: [
     BrowserModule,

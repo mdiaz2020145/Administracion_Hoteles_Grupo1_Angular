@@ -23,6 +23,7 @@ export class InicioComponent implements OnInit {
   constructor(public _hotelesService: HotelesService, public formBuilder: FormBuilder) {
     this.hotelModelPost = new Hoteles("", "", "", "", "")
     this.hotelModelGetId = new Hoteles("", "", "", "", "")
+    this.hotelModelGet = new Hoteles("", "", "", "", "")
     this.token = _hotelesService.obtenerToken();
     this.postForm = this.formBuilder.group({
       nombre: [''],
