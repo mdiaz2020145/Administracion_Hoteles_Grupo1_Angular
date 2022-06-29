@@ -19,7 +19,7 @@ import { BienvenidaComponent } from './components/bienvenida/bienvenida.componen
     InicioComponent,
     NavbarComponent,
     LoginComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
   ],
   imports: [
     BrowserModule,

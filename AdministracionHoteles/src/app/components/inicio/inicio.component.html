@@ -1,8 +1,8 @@
 <!-- modal agregar -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary buttonAgregar mt-5" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+<!--<button type="button" class="btn btn-primary buttonAgregar mt-5" data-bs-toggle="modal" data-bs-target="#modalAgregar">
   Agregar Hoteles
-</button>
+</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,19 +36,21 @@
   </div>
 </div>
 
+<section id="hero">
+  <div class="hero-container">
+    <h1>Hoteles</h1>
+    <h2>Aqui podra encontrar los mejores hoteles a su conveniencia </h2>
+  </div>
+</section><!-- #hero -->
 
-<!-- card listar -->
+ <!--card listar -->
 <!--<div class="container">
   <div class="row">
     <ng-container>
       <div class="col-12 col-md-6 mt-4 "*ngFor="let hotel of hotelModelGet">
         <div class="card flex-md-row mb-4 shadow-sm h-md-250 bg-color tamaño" *ngIf="validation==true">
-          <div class="card-body d-flex flex-column align-items-start" *ngIf=" getHotelDisponible(hotel.nombre)">
             <div class="disponibilidad" *ngIf="contador != 0" >
                 Disponible
-            </div>
-            <div class="noDisponibilidad" *ngIf="contador >= 0">
-                No disponible
             </div>
             <strong class="d-inline-block mb-2 text-primary" style="font-size:30px">{{hotel.nombre}}</strong>
             <div class="row">
@@ -78,11 +80,7 @@
             <p>No hay ningun hotel</p>
             <hr>
           </div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</div>-->
+        </div>-->
 
 <!-- offcanvas editar -->
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
