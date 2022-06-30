@@ -22,7 +22,7 @@ export class InicioComponent implements OnInit {
 
   constructor(public _hotelesService: HotelesService, public formBuilder: FormBuilder) {
     this.hotelModelPost = new Hoteles("", "", "", "", "")
-    this.hotelModelGetId = new Hoteles("", "", "", "", "")
+    this.hotelModelGetId = new Hoteles('','','','','')
     this.hotelModelGet = new Hoteles("", "", "", "", "")
     this.token = _hotelesService.obtenerToken();
     this.postForm = this.formBuilder.group({
@@ -76,7 +76,8 @@ export class InicioComponent implements OnInit {
       }
     )
   }
-  getHotelesId(idHotel: String) {
+  
+  /*getHotelesId(idHotel) {
     this._hotelesService.obtenerHotelesId(idHotel, this.token).subscribe({
       next: (response: any) => {
         if (response.mensaje == 0) {
@@ -95,7 +96,27 @@ export class InicioComponent implements OnInit {
       },
       error: (err) => console.log(err)
     })
+  }*/
+
+  getHotelesId(idHotel) {
+    this._hotelesService.obtenerHotelesId(idHotel,this.token).subscribe(
+      (response)=>{
+        if(response.hotel == 0){
+          this.validation = false;
+        }else{
+          this.validation = true
+          this.hotelModelGetId = response.hotel;
+        }
+        console.log(this.hotelModelGetId)
+      },
+      (error)=>{
+        console.log(<any>error)
+      }
+    )
+
+
   }
+
 
   postHotel() {
     this._hotelesService.agregarHoteles(this.postForm.value, this.token).subscribe(
