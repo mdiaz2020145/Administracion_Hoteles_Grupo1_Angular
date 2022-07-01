@@ -24,7 +24,7 @@ export class HotelesService {
     return this._http.get(this.url + '/buscarHotelPorPais', { headers: headersToken })
   }
 
-  obtenerHotelesId(id:string, token: any): Observable<any> {
+  obtenerHotelesId(id: any, token: any): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
     return this._http.get(this.url + '/buscarHotelPorId/' + id, { headers: headersToken })
   }
@@ -40,6 +40,8 @@ export class HotelesService {
   }
 
   editarHoteles(modeloHoteles: HotelesModule, token: any): Observable<any> {
+    console.log("modeloHoteles._id" + modeloHoteles._id)
+    modeloHoteles.idAdmin = undefined;
     let parametros = JSON.stringify(modeloHoteles)
     let headersToken = this.headersVariable.set('Authorization', token)
     return this._http.put(this.url + '/editarHotel/' + modeloHoteles._id, parametros, { headers: headersToken })

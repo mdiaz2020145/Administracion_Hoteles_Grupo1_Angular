@@ -13,25 +13,28 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="postForm" novalidate>
+        <form #agregarHotel="ngForm">
           <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input formControlName="nombre" type="text" class="form-control" required>
+            <label for="inputNombre" class="form-label">Nombre del hotel</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+              [(ngModel)]="hotelModelPost.nombre">
           </div>
           <div class="mb-3">
-            <label class="form-label">Direccion</label>
-            <input formControlName="direccion" type="text" class="form-control" required>
+            <label for="inputNombre" class="form-label">Direccion del hotel</label>
+            <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+              [(ngModel)]="hotelModelPost.direccion">
           </div>
           <div class="mb-3">
-            <label class="form-label">Pais</label>
-            <input formControlName="pais" type="text" class="form-control" required>
+            <label for="inputNombre" class="form-label">Pais</label>
+            <input type="text" class="form-control" id="inputPais" name="pais" #pais="ngModel"
+              [(ngModel)]="hotelModelPost.pais">
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button [disabled]="!postForm.valid" type="submit" data-bs-dismiss="modal" class="btn btn-primary"
-          (click)="postHotel()">Guardar</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            (click)="postHotel(agregarHotel)">Agregar</button>
+        </div>
       </div>
     </div>
   </div>
@@ -73,21 +76,23 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <form [formGroup]="editForm" (ngSubmit)="putHotel()" novalidate>
+    <form>
       <div class="mb-3">
-        <label class="form-label" for="inputNombre">Nombre</label>
-        <input formControlName="nombre" type="text" class="form-control" required>
+        <label for="inputNombre" class="form-label">Nombre del hotel</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="hotelModelGetId.nombre">
       </div>
       <div class="mb-3">
-        <label class="form-label">Direccion</label>
-        <input formControlName="direccion" type="text" class="form-control" required>
+        <label for="inputNombre" class="form-label">Direccion del hotel</label>
+        <input type="text" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+          [(ngModel)]="hotelModelGetId.direccion">
       </div>
       <div class="mb-3">
-        <label class="form-label">Pais</label>
-        <input formControlName="pais" type="text" class="form-control" required>
+        <label for="inputNombre" class="form-label">Pais</label>
+        <input type="text" class="form-control" id="inputPais" name="pais" #pais="ngModel" [(ngModel)]="hotelModelGetId.pais">
       </div>
-      <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancelar</button>
-      <button type="submit" class="btn btn-success">Cambiar</button>
+      <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+      <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putHotel()">Editar</button>
     </form>
   </div>
 </div>
