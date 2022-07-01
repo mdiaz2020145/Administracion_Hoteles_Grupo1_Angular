@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
+import { EventosComponent } from './components/eventos/eventos.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { BienvenidaComponent } from './components/bienvenida/bienvenida.componen
     NavbarComponent,
     LoginComponent,
     BienvenidaComponent,
+    EventosComponent,
   ],
   imports: [
     BrowserModule,
