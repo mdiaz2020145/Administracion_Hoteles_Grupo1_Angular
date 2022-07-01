@@ -56,10 +56,10 @@
           <p class="card-text">Nombre del Hotel: {{hotel.nombre}}</p>
           <p class="card-text">Direccion del Hotel: {{hotel.direccion}}</p>
           <p class="card-text">Pais: {{hotel.pais}}</p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">Agregar</button>
           <button type="button" class="btn btn-warning"data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-          aria-controls="offcanvasScrolling"(click)="getHotelesId(hotel._id)" >Editar </button>
-          <button type="button" class="btn btn-danger" (click)="deleteHotel(hotel._id)">Eliminar</button>
+          aria-controls="offcanvasScrolling"(click)="getHotelesId(hotel._id)" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">Editar </button>
+          <button type="button" class="btn btn-danger" (click)="deleteHotel(hotel._id)" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">Eliminar</button>
         </div>
         <button type="button" class="btn btn-success">Ver Habitaciones</button>
       </div>
