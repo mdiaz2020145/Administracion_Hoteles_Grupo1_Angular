@@ -12,6 +12,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { HabitacionesComponent } from './components/habitaciones/habitaciones.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { EventosComponent } from './components/eventos/eventos.component';
     LoginComponent,
     BienvenidaComponent,
     EventosComponent,
+    HabitacionesComponent,
   ],
   imports: [
     BrowserModule,

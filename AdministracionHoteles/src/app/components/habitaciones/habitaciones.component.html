@@ -1,0 +1,123 @@
+<!-- modal agregar -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-verde">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Habitaciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-group">
+          <div class="mb-3">
+            <label for="inputNumero" class="form-label">Numero de la Habitacion</label>
+            <input type="number" class="form-control" id="inputNumero" name="numero" #numero="ngModel"
+              [(ngModel)]="habitacionesModelPost.numeroDeHabitacion" required>
+          </div>
+          <div class="mb-3">
+            <label for="inputDesc" class="form-label">Descripcion de la Habitacion</label>
+            <input type="text" class="form-control" id="inputDesc" name="descripcion" #descripcion="ngModel"
+              [(ngModel)]="habitacionesModelPost.descripcion">
+          </div>
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+              [(ngModel)]="habitacionesModelPost.precio" required>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            (click)="postHabitaciones()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="hero">
+  <div class="hero-container">
+    <h1>Habitaciones</h1>
+    <h2>Aqui encontrara todas las habitaciones del hotel</h2>
+  </div>
+</section>
+<section class="espacio"></section>
+<button type="button" class="btn btn-success buttonAgregar my-3 "
+  *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+  Agregar Habitaciones
+</button>
+<section class="container">
+  <div class="row  gx-4 gy-3 align-items-center" style="height: 50vh">
+    <div class="col" *ngFor="let hab of habitacionesModelGet">
+      <div class="card mb-5" style="width: 20rem;height: 30rem">
+        <img src="https://live.staticflickr.com/2227/2115636556_f57c57b98d.jpg" class="card-img-top">
+        <div class="card-body">
+          <p class="card-text">Numero de Habitacion: {{hab.numeroDeHabitacion}}</p>
+          <p class="card-text">Precio de Habitacion: {{hab.precio}}</p>
+          <ng-container *ngIf="hab.descripcion!==undefined">
+            <p class="card-text">Descripcion: {{hab.descripcion}}</p>
+          </ng-container>
+          <ng-container *ngIf="hab.descripcion==undefined || hab.descripcion==''">
+            <p class="card-text">Descripcion: Actualmente esta habitacion no cuenta con descripcion</p>
+          </ng-container>
+          <ng-container *ngIf="hab.disponible==true">
+            <div class="bg-success text-center text-light mb-3" style="width: 150px; border-radius: 10px;">Disponible
+            </div>
+          </ng-container>
+          <ng-container *ngIf="hab.disponible==false">
+            <div class="bg-danger text-center text-light mb-3" style="width: 150px; border-radius: 10px;">No Disponible
+            </div>
+          </ng-container>
+          <div style="width: 80%; background: transparent; margin: 5px auto; padding:1px ">
+            <button style=" width: 45%;" type="button" class="btn btn-warning mx-1" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
+              (click)="getHabitacionesId(hab._id)" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">Editar
+            </button>
+            <button style="width:45%;" type="button" class="btn btn-danger mx-1" (click)="deleteHabitaciones(hab._id)"
+              *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">Eliminar</button>
+          </div>
+        </div>
+        <button *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'" type="button"
+          class="btn btn-success mb-3" style="width: 125px; margin: 0 auto">Reservar</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- #hero -->
+
+<!-- offcanvas editar -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+  id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header bg-verde">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Editar</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="form-group">
+      <div class="mb-3">
+        <label for="inputNumero" class="form-label">Numero de la Habitacion</label>
+        <input type="number" class="form-control" id="inputNumero" name="numero" #numero="ngModel"
+          [(ngModel)]="habitacionesModelGetId.numeroDeHabitacion" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPrecio" class="form-label">Precio de la Habitacion</label>
+        <input type="number" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+          [(ngModel)]="habitacionesModelGetId.precio">
+      </div>
+      <div class="mb-3">
+        <label for="inputDesc" class="form-label">Descripcion</label>
+        <input type="text" class="form-control" id="inputDesc" name="Desc" #Desc="ngModel"
+          [(ngModel)]="habitacionesModelGetId.descripcion">
+      </div>
+      <div class="mb-3">
+        <label for="inputDisp" class="form-label">Disponibilidad</label>
+        <select class="form-select" aria-label="Default select example" id="inputDisp" name="Disp" #Disp="ngModel"
+          [(ngModel)]="habitacionesModelGetId.disponible">
+          <option value="true">Disponible</option>
+          <option value="false">No Disponible</option>
+        </select>
+      </div>
+      <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+      <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putHabitaciones()">Actualizar</button>
+    </form>
+  </div>
+</div>

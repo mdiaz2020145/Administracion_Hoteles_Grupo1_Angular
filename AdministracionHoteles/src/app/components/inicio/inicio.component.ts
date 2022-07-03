@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HotelesModule as Hoteles } from 'src/app/models/hoteles.model';
+import { HabitacionesService } from 'src/app/services/habitaciones.service';
 import { HotelesService } from 'src/app/services/hoteles.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -16,7 +18,7 @@ export class InicioComponent implements OnInit {
   public token: any;
   public validation: Boolean = true;
 
-  constructor(public _hotelesService: HotelesService) {
+  constructor(public _hotelesService: HotelesService, public _habitacionesService: HabitacionesService) {
     this.hotelModelPost = new Hoteles("", "", "", "", "")
     this.hotelModelGetId = new Hoteles('', '', '', '', '')
     this.token = _hotelesService.obtenerToken();
