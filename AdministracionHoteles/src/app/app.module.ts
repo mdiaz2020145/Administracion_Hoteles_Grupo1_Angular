@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { HabitacionesComponent } from './components/habitaciones/habitaciones.component';
+import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { RegistrarComponent } from './components/registrar/registrar.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { HabitacionesComponent } from './components/habitaciones/habitaciones.co
     BienvenidaComponent,
     EventosComponent,
     HabitacionesComponent,
+    EditarPerfilComponent,
+    RegistrarComponent,
   ],
   imports: [
     BrowserModule,
