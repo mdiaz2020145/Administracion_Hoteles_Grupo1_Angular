@@ -11,18 +11,19 @@ export class EditarPerfilComponent implements OnInit {
 
   public usuarioModelGetId: Usuarios;
   public usuarioModelGet: any;
-  public token;
+  public token:any;
+  public id:string;
   public buscar;
-  public validation: Boolean=true
+  public validation: Boolean=true;
 
   constructor(public _servicesUsuario:UsuariosService) {
     this.usuarioModelGetId = new Usuarios('','','','','');
-    //this.usuarioModelGet = new Usuarios('','','','','');
     this.token = _servicesUsuario.obtenerToken();
+    this.id=_servicesUsuario.obtenerIdentidad()._id;
   }
 
   ngOnInit(): void {
-    this.getUsuario
+    this.getUsuarioId()
   }
 
   getUsuario(){
@@ -43,11 +44,12 @@ export class EditarPerfilComponent implements OnInit {
     )
   }
 
-  getUsuarioId(idUsuario){
-    this._servicesUsuario.obtenerUsuarioId(idUsuario, this.token).subscribe({
+  getUsuarioId(){
+    console.log(this.id)
+    this._servicesUsuario.obtenerUsuarioId(this.id, this.token).subscribe({
       next: (response) => {
-        this.usuarioModelGetId = response.mensaje;
-        console.log("console asdfasd" + this.usuarioModelGetId)
+        this.usuarioModelGetId = response.usuario;
+        console.log("console " + this.usuarioModelGetId)
       },
       error: (err: any) => { console.log(err) }
     })
