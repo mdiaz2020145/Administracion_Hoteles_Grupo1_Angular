@@ -62,6 +62,7 @@
           <button type="button" class="btn btn-danger" (click)="deleteHotel(hotel._id)" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">Eliminar</button>
         </div>
         <button type="button" class="btn btn-success"  [routerLink]="['/habitaciones', hotel._id]">Ver Habitaciones</button>
+        <button type="button" class="btn btn-warning" [routerLink]="['/eventos', hotel._id]">Ver Eventos</button>
       </div>
     </div>
   </div>

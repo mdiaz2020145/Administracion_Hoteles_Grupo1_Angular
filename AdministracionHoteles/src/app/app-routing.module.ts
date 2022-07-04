@@ -7,14 +7,16 @@ import { BienvenidaComponent } from './components/bienvenida/bienvenida.componen
 import { HabitacionesComponent } from './components/habitaciones/habitaciones.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
+import { EventosComponent } from './components/eventos/eventos.component';
 
 const routes: Routes = [
- {path: 'inicio', component: InicioComponent},
- {path: 'login', component: LoginComponent},
- {path: 'bienvenida',component: BienvenidaComponent},
- {path: 'habitaciones/:idHotel', component:HabitacionesComponent},
- {path: 'editar-perfil',component: EditarPerfilComponent},
- {path: 'registrar',component: RegistrarComponent}
+  { path: 'inicio', component: InicioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'bienvenida', component: BienvenidaComponent },
+  { path: 'habitaciones/:idHotel', component: HabitacionesComponent },
+  { path: 'editar-perfil', component: EditarPerfilComponent },
+  { path: 'registrar', component: RegistrarComponent },
+  { path: 'eventos/:idHotel', component: EventosComponent }
 ];
 
 @NgModule({

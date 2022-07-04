@@ -1,1 +1,100 @@
-<p>eventos works!</p>
+<!-- button modal -->
+<div class="contenedor max-width-xl">
+  <button type="button" class="btn btn-primary direccionButton" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
+    Agregar
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Eventos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #agregarEventos="ngForm">
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Nombre del evento</label>
+              <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+                [(ngModel)]="eventosModelPost.nombreEvento">
+            </div>
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Descripcion del hotel</label>
+              <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="eventosModelPost.descripcion">
+            </div>
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Precio</label>
+              <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+                [(ngModel)]="eventosModelPost.precio">
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+              (click)="postEventos(agregarEventos)">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- off canvas  -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Eventos</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+          <label for="inputNombre" class="form-label">Nombre del evento</label>
+          <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+            [(ngModel)]="eventosModelGetId.nombreEvento">
+        </div>
+        <div class="mb-3">
+          <label for="inputNombre" class="form-label">Descripcion del hotel</label>
+          <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+            [(ngModel)]="eventosModelGetId.descripcion">
+        </div>
+        <div class="mb-3">
+          <label for="inputNombre" class="form-label">Precio</label>
+          <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+            [(ngModel)]="eventosModelGetId.precio">
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="offcanvas"
+          (click)="putEventos()">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- card de listado -->
+  <div class="d-flex align-content-between flex-wrap justify-content-between">
+    <div *ngFor="let eventos of eventosModelGet">
+      <div class="card cardSpace" style="width: 18rem;">
+        <img src="../../../assets/eventos-hotel.jpg"class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> {{eventos.nombreEvento}}</h5>
+          <p class="card-text">
+            {{eventos.descripcion}}
+          </p>
+          <p class="card-text">
+            {{eventos.precio}}
+          </p>
+          <div class="botones-alineacion">
+            <button class="btn btn-warning w-50" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getEventosID(eventos._id)" *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
+              Editar
+            </button>
+            <button type="button" class="btn btn-danger w-50" (click)="deleteEventos(eventos._id)" *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
