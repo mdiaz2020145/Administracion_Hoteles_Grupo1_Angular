@@ -54,4 +54,16 @@ export class EditarPerfilComponent implements OnInit {
       error: (err: any) => { console.log(err) }
     })
   }
+
+  putCuenta(){
+    this._servicesUsuario.editarCuenta(this.usuarioModelGetId, this.token).subscribe(
+      response => {
+        this.getUsuario()
+      },
+      error=> {
+        console.log(<any>error)
+      }
+    )
+  }
 }
+

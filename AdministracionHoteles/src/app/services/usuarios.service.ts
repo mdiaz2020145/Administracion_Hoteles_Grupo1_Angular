@@ -64,4 +64,10 @@ export class UsuariosService {
     let parametros = JSON.stringify(modeloUsuario);
     return this._http.post(this.url + '/registrarUsuario', parametros, { headers: this.headersVariable })
   }
+
+  editarCuenta(modeloUsuario:Usuarios,  token: any): Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token)
+    let parametros = JSON.stringify(modeloUsuario)
+    return this._http.put(this.url + "/editarUsuario/" + modeloUsuario._id, parametros, { headers: headersToken })
+  }
 }

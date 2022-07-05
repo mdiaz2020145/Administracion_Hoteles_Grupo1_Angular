@@ -49,7 +49,9 @@
                 <div class="pt-1 mb-4">
                   <div style="width: 100%">
                     <button class="btn btn-guardar btn-lg btn-block" name="button" type="button"
-                    style="color:black; display:block; width: 160px; margin: 60px auto 0 ;">Editar Perfil</button>
+                    style="color:black; display:block; width: 160px; margin: 60px auto 0 ; " data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
+                    (click)="getUsuarioId()">Editar Perfil</button>
                   </div>
                 </div>
               </div>
@@ -60,3 +62,29 @@
     </div>
   </div>
 </section>
+
+<!-- offcanvas editar -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+  id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header bg-verde">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Editar</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="form-group">
+      <div class="mb-3">
+        <label for="inputNumero" class="form-label">Correo electronico</label>
+        <input type="email" class="form-control" id="inputEmail" name="email" #email="ngModel" placeholder="Correo electronico"
+                      [(ngModel)]="usuarioModelGetId.email" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPrecio" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" placeholder="Nick o nombre para identificarse"
+        [(ngModel)]="usuarioModelGetId.nombre" required>
+      </div>
+      <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
+      <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putCuenta()">Actualizar</button>
+    </form>
+  </div>
+</div>
+
