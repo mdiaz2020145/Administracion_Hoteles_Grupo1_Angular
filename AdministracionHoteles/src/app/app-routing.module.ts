@@ -8,6 +8,7 @@ import { HabitacionesComponent } from './components/habitaciones/habitaciones.co
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'habitaciones/:idHotel', component: HabitacionesComponent },
   { path: 'editar-perfil', component: EditarPerfilComponent },
   { path: 'registrar', component: RegistrarComponent },
-  { path: 'eventos/:idHotel', component: EventosComponent }
+  { path: 'eventos/:idHotel', component: EventosComponent },
+  {path: 'servicios/:idHotel',component: ServiciosComponent}
 ];
 
 @NgModule({

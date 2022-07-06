@@ -15,6 +15,7 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { HabitacionesComponent } from './components/habitaciones/habitaciones.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
     HabitacionesComponent,
     EditarPerfilComponent,
     RegistrarComponent,
+    ServiciosComponent,
   ],
   imports: [
     BrowserModule,
