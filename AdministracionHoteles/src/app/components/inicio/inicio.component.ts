@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HotelesModule as Hoteles } from 'src/app/models/hoteles.model';
 import { HabitacionesService } from 'src/app/services/habitaciones.service';
 import { HotelesService } from 'src/app/services/hoteles.service';
-
+import { BuscarHotelPipe } from '../pipes/buscar-hotel.pipe';
 
 @Component({
   selector: 'app-inicio',
