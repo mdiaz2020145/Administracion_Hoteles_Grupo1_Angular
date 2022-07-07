@@ -38,7 +38,9 @@ export class EventosComponent implements OnInit {
         console.log(res.eventos == 0)
         if (res.eventos == 0) {
           console.log("datos vacios")
+          this.validation = false
         } else {
+          this.validation = true
           console.log(res.eventos)
           this.eventosModelGet = res.eventos
         }

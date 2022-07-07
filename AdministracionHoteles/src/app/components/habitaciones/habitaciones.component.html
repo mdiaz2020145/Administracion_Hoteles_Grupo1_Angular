@@ -40,11 +40,26 @@
     <h2>Aqui encontrara todas las habitaciones del hotel</h2>
   </div>
 </section>
+
 <section class="espacio"></section>
-<button type="button" class="btn btn-success buttonAgregar my-3 "
+
+<div class="container">
+  <button type="button" class="btn btn-success  my-3 "
   *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'" data-bs-toggle="modal" data-bs-target="#modalAgregar">
   Agregar Habitaciones
 </button>
+</div>
+
+<section class="container mb-5" *ngIf="validation===false">
+  <div class="alert alert-warning text-center" role="alert">
+    <h4 class="alert-heading">¡Lo sentimos!</h4>
+    <p>Al parecer no hay Habitaciones que visualizar en este momento, ¡Por favor revisa mas tarde!</p>
+    <hr>
+    <p class="mb-0" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN'">O ¡Puedes agregar una nueva habitacion!
+    </p>
+  </div>
+</section>
+
 <section class="container">
   <div class="row  gx-4 gy-3 align-items-center" style="height: 50vh">
     <div class="col" *ngFor="let hab of habitacionesModelGet">
@@ -116,8 +131,10 @@
           <option value="false">No Disponible</option>
         </select>
       </div>
-      <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
-      <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putHabitaciones()">Actualizar</button>
+      <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
+        <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="putHabitaciones()">Actualizar</button>
+      </div>
     </form>
   </div>
 </div>

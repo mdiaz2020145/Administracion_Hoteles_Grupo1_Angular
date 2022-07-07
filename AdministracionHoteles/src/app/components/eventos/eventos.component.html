@@ -1,100 +1,129 @@
 <!-- button modal -->
-<div class="contenedor max-width-xl">
-  <button type="button" class="btn btn-primary direccionButton" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
-    Agregar
-  </button>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Eventos</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form #agregarEventos="ngForm">
-            <div class="mb-3">
-              <label for="inputNombre" class="form-label">Nombre del evento</label>
-              <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
-                [(ngModel)]="eventosModelPost.nombreEvento">
-            </div>
-            <div class="mb-3">
-              <label for="inputNombre" class="form-label">Descripcion del hotel</label>
-              <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
-                [(ngModel)]="eventosModelPost.descripcion">
-            </div>
-            <div class="mb-3">
-              <label for="inputNombre" class="form-label">Precio</label>
-              <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
-                [(ngModel)]="eventosModelPost.precio">
-            </div>
-          </form>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-              (click)="postEventos(agregarEventos)">Agregar</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-verde">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Eventos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #agregarEventos="ngForm">
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre del evento</label>
+            <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+              [(ngModel)]="eventosModelPost.nombreEvento">
           </div>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Descripcion del hotel</label>
+            <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+              [(ngModel)]="eventosModelPost.descripcion">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+              [(ngModel)]="eventosModelPost.precio">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            (click)="postEventos(agregarEventos)">Agregar</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- off canvas  -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Eventos</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <form>
-        <div class="mb-3">
-          <label for="inputNombre" class="form-label">Nombre del evento</label>
-          <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
-            [(ngModel)]="eventosModelGetId.nombreEvento">
-        </div>
-        <div class="mb-3">
-          <label for="inputNombre" class="form-label">Descripcion del hotel</label>
-          <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
-            [(ngModel)]="eventosModelGetId.descripcion">
-        </div>
-        <div class="mb-3">
-          <label for="inputNombre" class="form-label">Precio</label>
-          <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
-            [(ngModel)]="eventosModelGetId.precio">
-        </div>
-      </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="offcanvas"
-          (click)="putEventos()">Agregar</button>
+<!-- off canvas  -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header bg-verde">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre del evento</label>
+        <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+          [(ngModel)]="eventosModelGetId.nombreEvento">
+      </div>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Descripcion del hotel</label>
+        <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+          [(ngModel)]="eventosModelGetId.descripcion">
+      </div>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+          [(ngModel)]="eventosModelGetId.precio">
+      </div>
+    </form>
+    <div class="modal-footer">
+      <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
+        <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas" (click)="putEventos()">Actualizar</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- card de listado -->
-  <div class="d-flex align-content-between flex-wrap justify-content-between">
-    <div *ngFor="let eventos of eventosModelGet">
-      <div class="card cardSpace" style="width: 18rem;">
-        <img src="../../../assets/eventos-hotel.jpg"class="card-img-top" alt="...">
+<!-- card de listado -->
+<section id="hero">
+  <div class="hero-container">
+    <h1>Eventos</h1>
+    <h2>Aqui podra encontrar los mejores eventos para su entretenimiento </h2>
+  </div>
+</section>
+
+<section class="espacio"></section>
+
+<div class="container">
+  <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
+    Agregar Evento
+  </button>
+</div>
+
+<section class="container mb-5" *ngIf="validation===false">
+  <div class="alert alert-warning text-center" role="alert">
+    <h4 class="alert-heading">¡Lo sentimos!</h4>
+    <p>Al parecer no hay Eventos que visualizar en este momento, ¡Por favor revisa mas tarde!</p>
+    <hr>
+    <p class="mb-0" *ngIf="_eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">O ¡Puedes agregar un nuevo evento!
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row  gx-4 gy-3 align-items-center" style="height: 50vh">
+    <div class="col" *ngFor="let eventos of eventosModelGet">
+      <div class="card mb-5" style="width: 20rem;height: 28rem">
+        <img src="../../../assets/eventos-hotel.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title"> {{eventos.nombreEvento}}</h5>
+          <p class="card-text text"> Evento: {{eventos.nombreEvento}}</p>
+          <ng-container *ngIf="eventos.descripcion!==undefined">
+            <p class="card-text">Descripcion: {{eventos.descripcion}}</p>
+          </ng-container>
+          <ng-container *ngIf="eventos.descripcion==undefined || eventos.descripcion==''">
+            <p class="card-text">Descripcion: Actualmente esta este evento no cuenta con descripcion</p>
+          </ng-container>
           <p class="card-text">
-            {{eventos.descripcion}}
+            Precio: {{eventos.precio}}
           </p>
-          <p class="card-text">
-            {{eventos.precio}}
-          </p>
-          <div class="botones-alineacion">
-            <button class="btn btn-warning w-50" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-              aria-controls="offcanvasExample" (click)="getEventosID(eventos._id)" *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
+          <div style="width: 80%; background: transparent; margin: 5px auto; padding:1px " >
+            <button style="width: 45%; margin: 0 5px;"class="btn btn-warning" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" (click)="getEventosID(eventos._id)"
+              *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
               Editar
             </button>
-            <button type="button" class="btn btn-danger w-50" (click)="deleteEventos(eventos._id)" *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
+            <button style="width: 45%; margin: 0 5px;" type="button" class="btn btn-danger" (click)="deleteEventos(eventos._id)"
+              *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
               Eliminar
             </button>
           </div>
         </div>
       </div>
-  </div>
+    </div>
   </div>
 </div>

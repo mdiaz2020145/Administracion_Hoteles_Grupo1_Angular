@@ -34,13 +34,15 @@ export class HabitacionesComponent implements OnInit {
     })
   }
 
-  getHabitaciones(idHotel:String) {
+  getHabitaciones(idHotel) {
     this._habitacionesService.obtenerHabitaciones(idHotel).subscribe(
       response => {
         if (response.habitaciones == 0) {
           console.log("datos vacios")
+          this.validation=false
         } else {
           this.habitacionesModelGet = response.habitaciones
+          this.validation= true
         }
         console.log(this.habitacionesModelGet)
       },
