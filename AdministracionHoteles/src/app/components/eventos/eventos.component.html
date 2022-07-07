@@ -15,7 +15,7 @@
               [(ngModel)]="eventosModelPost.nombreEvento">
           </div>
           <div class="mb-3">
-            <label for="inputNombre" class="form-label">Descripcion del hotel</label>
+            <label for="inputNombre" class="form-label">Descripcion del evento</label>
             <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
               [(ngModel)]="eventosModelPost.descripcion">
           </div>
@@ -102,7 +102,7 @@
         <img src="../../../assets/eventos-hotel.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text text"> Evento: {{eventos.nombreEvento}}</p>
-          <ng-container *ngIf="eventos.descripcion!==undefined">
+          <ng-container *ngIf="eventos.descripcion!==undefined && eventos.descripcion!==''">
             <p class="card-text">Descripcion: {{eventos.descripcion}}</p>
           </ng-container>
           <ng-container *ngIf="eventos.descripcion==undefined || eventos.descripcion==''">

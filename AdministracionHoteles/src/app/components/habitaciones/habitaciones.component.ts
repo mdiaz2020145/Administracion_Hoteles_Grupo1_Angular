@@ -39,6 +39,7 @@ export class HabitacionesComponent implements OnInit {
       response => {
         if (response.habitaciones == 0) {
           console.log("datos vacios")
+          this.habitacionesModelGet=response.habitaciones
           this.validation=false
         } else {
           this.habitacionesModelGet = response.habitaciones
@@ -63,7 +64,7 @@ export class HabitacionesComponent implements OnInit {
   }
 
   postHabitaciones(){
-    this._habitacionesService.agregarHabitaciones(this.habitacionesModelPost,this.idHotel, this.token).subscribe(
+    this._habitacionesService.agregarHabitaciones (this.idHotel, this.habitacionesModelPost,this.token).subscribe(
       response => {
           this.getHabitaciones(this.idHotel)
       },

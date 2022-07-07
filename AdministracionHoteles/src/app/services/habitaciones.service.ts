@@ -19,7 +19,7 @@ export class HabitacionesService {
     return this._http.get(this.url + "/buscarHabitaciones/" + idHotel, { headers: this.headersVariable })
   }
 
-  agregarHabitaciones(modelHabitacion: HabitacionesModel, idHotel: String, token: any): Observable<any>{
+  agregarHabitaciones(idHotel: String, modelHabitacion: HabitacionesModel,  token: any): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token)
     let parametros = JSON.stringify(modelHabitacion)
     return this._http.post(this.url +"/agregarHabitacion/"+ idHotel, parametros, { headers: headersToken })

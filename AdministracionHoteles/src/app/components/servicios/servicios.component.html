@@ -1,75 +1,95 @@
 <!-- modal agregar -->
 <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-verde">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Habitaciones</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form #agregarServicios="ngForm">
-            <div class="mb-3">
-              <label for="inputNombre" class="form-label">Nombre del servicio</label>
-              <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
-                [(ngModel)]="servicioModelPost.nombreServicio" required>
-            </div>
-            <div class="mb-3">
-              <label for="inputDesc" class="form-label">Descripcion del servicio</label>
-              <input type="text" class="form-control" id="inputDesc" name="descripcion" #descripcion="ngModel"
-                [(ngModel)]="servicioModelPost.descripcion">
-            </div>
-            <div class="mb-3">
-              <label for="inputPrecio" class="form-label">Precio</label>
-              <input type="number" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
-                [(ngModel)]="servicioModelPost.precio" required>
-            </div>
-          </form>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-              (click)="postServicio()">Agregar</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-verde">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #agregarServicios="ngForm">
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre del servicio</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+              [(ngModel)]="servicioModelPost.nombreServicio" required>
           </div>
+          <div class="mb-3">
+            <label for="inputDesc" class="form-label">Descripcion del servicio</label>
+            <input type="text" class="form-control" id="inputDesc" name="descripcion" #descripcion="ngModel"
+              [(ngModel)]="servicioModelPost.descripcion">
+          </div>
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+              [(ngModel)]="servicioModelPost.precio" required>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            (click)="postServicio()">Agregar</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 <section id="hero">
-    <div class="hero-container">
-      <h1>Servicios</h1>
-      <h2>Aqui encontrara todos los servicios del hotel</h2>
-    </div>
-  </section>
+  <div class="hero-container">
+    <h1>Servicios</h1>
+    <h2>Aqui encontrara todos los servicios del hotel</h2>
+  </div>
+</section>
 
-  <section class="espacio"></section>
-  <button type="button" class="btn btn-success buttonAgregar my-3 "
-  *ngIf=" _servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'" data-bs-toggle="modal" data-bs-target="#modalAgregar">
-  Agregar Habitaciones
-</button>
+<section class="espacio"></section>
+
+<div class="container">
+  <button type="button" class="btn btn-success my-3 " *ngIf=" _servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'"
+    data-bs-toggle="modal" data-bs-target="#modalAgregar">
+    Agregar Servicios
+  </button>
+</div>
+
+<section class="container mb-5" *ngIf="validation===false">
+  <div class="alert alert-warning text-center" role="alert">
+    <h4 class="alert-heading">¡Lo sentimos!</h4>
+    <p>Al parecer no hay Servicios que visualizar en este momento, ¡Por favor revisa mas tarde!</p>
+    <hr>
+    <p class="mb-0" *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'">O ¡Puedes agregar un nuevo servicio!
+    </p>
+  </div>
+</section>
+
 <section class="container">
-    <div class="row  gx-4 gy-3 align-items-center" style="height: 50vh">
-      <div class="col" *ngFor="let servicio of servicioModelGet">
-        <div class="card mb-5" style="width: 20rem;height: 30rem">
-          <img src="https://live.staticflickr.com/2227/2115636556_f57c57b98d.jpg" class="card-img-top">
-          <div class="card-body">
-            <p class="card-text">Nombre del servicio: {{servicio.nombreServicio}}</p>
-            <p class="card-text">Precio del servicio: {{servicio.precio}}</p>
-              <p class="card-text">Descripcion: {{servicio.descripcion}}</p>
-            <div style="width: 80%; background: transparent; margin: 5px auto; padding:1px ">
-              <button style=" width: 45%;" type="button" class="btn btn-warning mx-1" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
-                (click)="getServiciosID(servicio._id)" *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'">Editar
-              </button>
-              <button style="width:45%;" type="button" class="btn btn-danger mx-1" (click)="deleteServicios(servicio._id)"
-                *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'">Eliminar</button>
-            </div>
+  <div class="row  gx-4 gy-3 align-items-center" style="height: 50vh">
+    <div class="col" *ngFor="let servicio of servicioModelGet">
+      <div class="card mb-5" style="width: 20rem;height: 28rem">
+        <img src="https://live.staticflickr.com/2227/2115636556_f57c57b98d.jpg" class="card-img-top">
+        <div class="card-body">
+          <p class="card-text">Nombre del servicio: {{servicio.nombreServicio}}</p>
+          <p class="card-text">Precio del servicio: {{servicio.precio}}</p>
+          <ng-container *ngIf="servicio.descripcion!==''">
+            <p class="card-text">Descripcion: {{servicio.descripcion}}</p>
+          </ng-container>
+          <ng-container *ngIf="servicio.descripcion==''">
+            <p class="card-text">Descripcion: Actualmente este servicio no cuenta con descripcion</p>
+          </ng-container>
+          <div style="width: 80%; background: transparent; margin: 5px auto; padding:1px ">
+            <button style=" width: 45%;" type="button" class="btn btn-warning mx-1" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
+              (click)="getServiciosID(servicio._id)"
+              *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'">Editar
+            </button>
+            <button style="width:45%;" type="button" class="btn btn-danger mx-1" (click)="deleteServicios(servicio._id)"
+              *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_ADMIN'">Eliminar</button>
           </div>
-          <button *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_USUARIO'" type="button"
-            class="btn btn-success mb-3" style="width: 125px; margin: 0 auto">Reservar</button>
         </div>
+        <button *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_USUARIO'" type="button"
+          class="btn btn-success mb-3" style="width: 125px; margin: 0 auto">Reservar</button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 
@@ -97,8 +117,11 @@
         <input type="text" class="form-control" id="inputDesc" name="Desc" #Desc="ngModel"
           [(ngModel)]="servicioModelGetId.descripcion">
       </div>
-      <button class="btn btn-danger" data-bs-dismiss="offcanvas">Cerrar</button>
-      <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putServicio()">Actualizar</button>
+
+      <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
+        <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="putServicio()">Actualizar</button>
+      </div>
     </form>
   </div>
 </div>
