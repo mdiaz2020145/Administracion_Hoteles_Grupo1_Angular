@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HotelesModule as Hoteles } from 'src/app/models/hoteles.model';
 import { HabitacionesService } from 'src/app/services/habitaciones.service';
 import { HotelesService } from 'src/app/services/hoteles.service';
-import { BuscarHotelPipe } from '../pipes/buscar-hotel.pipe';
+import { Buscar } from '../pipes/buscar-hotel.pipe';
 
 @Component({
   selector: 'app-inicio',
@@ -17,6 +17,7 @@ export class InicioComponent implements OnInit {
   public hotelModelGet: any;
   public token: any;
   public validation: Boolean = true;
+  public buscar;
 
   constructor(public _hotelesService: HotelesService, public _habitacionesService: HabitacionesService) {
     this.hotelModelPost = new Hoteles("", "", "", "", "")

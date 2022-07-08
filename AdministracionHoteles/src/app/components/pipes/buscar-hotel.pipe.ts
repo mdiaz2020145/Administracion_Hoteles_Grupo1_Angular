@@ -2,16 +2,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 
 @Pipe({
-    name: 'buscarHotel'
+    name: 'buscar'
   })
 
-  export class BuscarHotelPipe implements PipeTransform {
-    transform(hoteles: any, buscarHotel: any):any {
-        if(buscarHotel == undefined){
+  export class Buscar implements PipeTransform {
+    transform(hoteles: any, buscar: any):any {
+        if(buscar == undefined){
             return hoteles;
         }else{
             return hoteles.filter(hoteles =>{
-                return hoteles.nombre.toLowerCase().includes(buscarHotel.toLowerCase());
+                return hoteles.nombre.toLowerCase().includes(buscar.toLowerCase());
             })
         }
     }

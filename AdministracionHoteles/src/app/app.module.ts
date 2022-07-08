@@ -16,7 +16,7 @@ import { HabitacionesComponent } from './components/habitaciones/habitaciones.co
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
-
+import { Buscar } from './components/pipes/buscar-hotel.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,8 @@ import { ServiciosComponent } from './components/servicios/servicios.component';
     EditarPerfilComponent,
     RegistrarComponent,
     ServiciosComponent,
+    Buscar
+
   ],
   imports: [
     BrowserModule,

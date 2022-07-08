@@ -47,6 +47,22 @@
   </div>
 </section>
 
+  
+<div class="container  min-vh-100 py-4">
+  <div class="row">
+      <div class="col-md-5 mx-auto">
+          <div class="small fw-light color-texto text-center"><h5>¿Hotel que desea buscar?</h5></div>
+          <div class="input-group">
+              <input class="form-control border-end-0 border rounded-pill" [(ngModel)]="buscar" name="buscar" placeholder="nombre del hotel"  type="search" value="search" id="example-search-input">
+              <span class="input-group-append">
+                  <button class="btn btn-outline-info bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                    Buscar
+                  </button>
+              </span>
+          </div>
+      </div>
+  </div>
+
 <section class="espacio"></section>
 
 <div class="container">
@@ -63,9 +79,10 @@ data-bs-toggle="modal" data-bs-target="#modalAgregar" >Agregar Hotel</button>
   </div>
 </section>
 
+
 <section class="container">
   <div class="row  gx-3 gy-3 align-items-center" style="height: 50vh" >
-    <div class="col" *ngFor="let hotel of hotelModelGet">
+    <div class="col" *ngFor="let hotel of hotelModelGet  |buscar:buscar">
       <div class="card mb-5" style="width: 18rem;">
         <img src="https://live.staticflickr.com/2227/2115636556_f57c57b98d.jpg" class="card-img-top" >
         <div class="card-body">
