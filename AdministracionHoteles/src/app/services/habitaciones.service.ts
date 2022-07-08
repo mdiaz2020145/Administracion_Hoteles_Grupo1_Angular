@@ -41,4 +41,10 @@ export class HabitacionesService {
     return this._http.delete(this.url + "/eliminarHabitacion/" + idHabitacion, { headers: headersToken })
   }
 
+  reservarHabitacion(modelHabitacion:HabitacionesModel, token:any):Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token)
+    let parametros = JSON.stringify(modelHabitacion)
+    return this._http.put(this.url + '/reservarHabitacion/'+modelHabitacion._id,parametros,{headers:headersToken})
+  }
+
 }

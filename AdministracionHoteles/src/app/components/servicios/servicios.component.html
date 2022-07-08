@@ -85,7 +85,8 @@
           </div>
         </div>
         <button *ngIf="_servicioServices.obtenerIdentidad().rol === 'ROL_USUARIO'" type="button"
-          class="btn btn-success mb-3" style="width: 125px; margin: 0 auto">Reservar</button>
+          class="btn btn-success mb-3" style="width: 125px; margin: 0 auto" (click)="getServiciosID(servicio._id)"data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasScrollingReservar" aria-controls="offcanvasScrolling">Reservar</button>
       </div>
     </div>
   </div>
@@ -120,7 +121,42 @@
 
       <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
         <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
-        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="putServicio()">Actualizar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="putServicio()">Reservar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- offcanvas Reservar -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+  id="offcanvasScrollingReservar" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header bg-verde">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Reservar</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="form-group">
+      <div class="mb-3">
+        <label for="inputnombreServicio" class="form-label">Nombre del servicio</label>
+        <input type="text" class="form-control" id="inputnombreServicio" name="nombreServicio" #nombreServicio="ngModel"
+          [(ngModel)]="servicioModelGetId.nombreServicio">
+      </div>
+      <div class="mb-3">
+        <label for="inputPrecio" class="form-label">Precio del servicio</label>
+        <input type="number" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+          [(ngModel)]="servicioModelGetId.precio">
+      </div>
+      <div class="mb-3">
+        <label for="inputDesc" class="form-label">Descripcion</label>
+        <input type="text" class="form-control" id="inputDesc" name="Desc" #Desc="ngModel"
+          [(ngModel)]="servicioModelGetId.descripcion">
+      </div>
+
+      <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
+        <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="reservarServicio()">Reservar</button>
       </div>
     </form>
   </div>

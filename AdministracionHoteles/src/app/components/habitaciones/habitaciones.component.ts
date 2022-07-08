@@ -96,4 +96,16 @@ export class HabitacionesComponent implements OnInit {
       )
   }
 
+  resevarHabitaciones(){
+    this._habitacionesService.reservarHabitacion(this.habitacionesModelGetId,this.token).subscribe(
+      response=>{
+        this.getHabitaciones(this.idHotel)
+      },
+      error=>{
+        console.log(<any>error)
+      }
+      
+    )
+  }
+
 }

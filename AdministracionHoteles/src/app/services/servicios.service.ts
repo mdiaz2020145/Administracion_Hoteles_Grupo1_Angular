@@ -42,6 +42,13 @@ export class ServiciosService {
     return this._http.delete(this.url + "/eliminarServicio/" + idServicio, { headers: headersToken })
   }
 
+  reservarServicio(modeloServicio:ServiciosModel,token:any):Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token)
+    let parametros = JSON.stringify(modeloServicio)
+
+    return this._http.put(this.url + '/reservarServicio/'+ modeloServicio._id,parametros,{headers:headersToken})
+  }
+
 
   obtenerToken() {
     var token2 = localStorage.getItem('token');

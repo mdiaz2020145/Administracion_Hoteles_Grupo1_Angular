@@ -121,8 +121,46 @@
               *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_ADMIN'">
               Eliminar
             </button>
+            <button style="width: 45%; margin: 0 5px;"class="btn btn-success mb-3" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExampleReservar" aria-controls="offcanvasExample" (click)="getEventosID(eventos._id)"
+              *ngIf="this._eventosServices.obtenerIdentidad().rol === 'ROL_USUARIO'">
+              Reservar
+            </button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- off canvas  -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExampleReservar" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header bg-verde">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Reservar</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre del evento</label>
+        <input type="text" class="form-control" id="inputNombreEvento" name="nombreEvento" #nombreEvento="ngModel"
+          [(ngModel)]="eventosModelGetId.nombreEvento">
+      </div>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Descripcion del hotel</label>
+        <input type="text" class="form-control" id="inputDescripcion" name="descripcion" #descripcion="ngModel"
+          [(ngModel)]="eventosModelGetId.descripcion">
+      </div>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+          [(ngModel)]="eventosModelGetId.precio">
+      </div>
+    </form>
+    <div class="modal-footer">
+      <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
+        <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas" (click)="reservarEventos()">Reservar</button>
       </div>
     </div>
   </div>

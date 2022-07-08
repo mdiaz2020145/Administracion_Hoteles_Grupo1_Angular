@@ -96,5 +96,16 @@ export class EventosComponent implements OnInit {
       error: (err: any) => { console.log(err) }
     })
   }
+
+  reservarEventos(){
+    this._eventosServices.reservarEvento(this.eventosModelGetId,this.token).subscribe(
+      response =>{
+        this.getEventos(this.idHotel)
+      },
+      error=>{
+        console.log(<any>error)
+      }
+    )
+  }
 }
 

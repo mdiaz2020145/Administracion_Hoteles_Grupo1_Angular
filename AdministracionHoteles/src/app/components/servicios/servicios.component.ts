@@ -101,5 +101,16 @@ export class ServiciosComponent implements OnInit {
     this.getServicios(this.idHotel)
   }
 
+  reservarServicio(){
+    this._servicioServices.reservarServicio(this.servicioModelGetId,this.token).subscribe(
+      response=>{
+        this.getServicios(this.idHotel)
+      },
+      error =>{
+        console.log(<any>error)
+      }
+    )
+  }
+
 
 }

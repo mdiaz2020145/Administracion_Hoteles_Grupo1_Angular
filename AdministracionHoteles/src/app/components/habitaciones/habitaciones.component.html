@@ -92,7 +92,8 @@
           </div>
         </div>
         <button *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'" type="button"
-          class="btn btn-success mb-3" style="width: 125px; margin: 0 auto">Reservar</button>
+          class="btn btn-success mb-3" style="width: 125px; margin: 0 auto"(click)="getHabitacionesId(hab._id)"data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasScrollingReservar">Reservar</button>
       </div>
     </div>
   </div>
@@ -134,6 +135,48 @@
       <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
         <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
         <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="putHabitaciones()">Actualizar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- offcanvas Reservar -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+  id="offcanvasScrollingReservar" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header bg-verde">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Reservar</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="form-group">
+      <div class="mb-3">
+        <label for="inputNumero" class="form-label">Numero de la Habitacion</label>
+        <input type="number" class="form-control" id="inputNumero" name="numero" #numero="ngModel"
+          [(ngModel)]="habitacionesModelGetId.numeroDeHabitacion" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPrecio" class="form-label">Precio de la Habitacion</label>
+        <input type="number" class="form-control" id="inputPrecio" name="precio" #precio="ngModel"
+          [(ngModel)]="habitacionesModelGetId.precio">
+      </div>
+      <div class="mb-3">
+        <label for="inputDesc" class="form-label">Descripcion</label>
+        <input type="text" class="form-control" id="inputDesc" name="Desc" #Desc="ngModel"
+          [(ngModel)]="habitacionesModelGetId.descripcion">
+      </div>
+      <div class="mb-3">
+        <label for="inputDisp" class="form-label">Disponibilidad</label>
+        <select class="form-select" aria-label="Default select example" id="inputDisp" name="Disp" #Disp="ngModel"
+          [(ngModel)]="habitacionesModelGetId.disponible">
+          <option value="true">Disponible</option>
+          <option value="false">No Disponible</option>
+        </select>
+      </div>
+      <div style="width: 70%; background: transparent; margin: 5px auto; padding:1px ">
+        <button style=" width: 45%; margin: 0 5px;" class="btn btn-danger " data-bs-dismiss="offcanvas">Cerrar</button>
+        <button  style=" width: 45%; margin: 0 5px;" class="btn btn-success " data-bs-dismiss="offcanvas"  (click)="resevarHabitaciones()">Reservar</button>
       </div>
     </form>
   </div>
