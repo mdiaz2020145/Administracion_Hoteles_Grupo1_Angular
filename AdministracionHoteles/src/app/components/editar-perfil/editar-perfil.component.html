@@ -29,7 +29,7 @@
                       [(ngModel)]="usuarioModelGetId.nombre" required>
                   </div>
                 </div>
-                <h6>Projects</h6>
+                <h6>Otras opciones:</h6>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
@@ -41,9 +41,10 @@
                     </div>
                   </div>
                   <div class="col-6 mb-3">
-                    <button class="btn btn-guardar btn-lg btn-block" name="button" type="button"
+                    <button class="btn btn-eliminarC btn-lg btn-block" name="button" type="button"
                     style="color:black; display:block; width: 160px; margin: 0 auto ; " data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Eliminar</button>
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" routerLink="/registrar"
+                    (click)="deleteUsuario()">Eliminar</button>
                   </div>
                 </div>
                 <div class="d-flex justify-content-start">
@@ -62,6 +63,9 @@
     </div>
   </div>
 </section>
+
+*ngIf="let eUser of usuarioModelGetId"
+(click)="deleteUsuario(eUser.id)"
 
 <!-- offcanvas editar -->
 <!--<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"

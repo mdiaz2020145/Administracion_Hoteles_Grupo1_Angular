@@ -65,5 +65,22 @@ export class EditarPerfilComponent implements OnInit {
       }
     )
   }
+
+  deleteUsuario() {
+    this._servicesUsuario.eliminarCuenta(this.id, this.token).subscribe(
+      (response)=>{
+        console.log(response);
+        if(response.usuario==0){
+          this.validation=false;
+        }else{
+          this.validation=true;
+          this.getUsuario();
+        }
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
 }
 

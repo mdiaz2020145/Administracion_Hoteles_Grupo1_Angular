@@ -70,4 +70,9 @@ export class UsuariosService {
     let parametros = JSON.stringify(modeloUsuario)
     return this._http.put(this.url + "/editarUsuario/" + modeloUsuario._id, parametros, { headers: headersToken })
   }
+
+  eliminarCuenta(id: String, token: any): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+    return this._http.delete(this.url + '/eliminarUsuario/' + id, { headers: headersToken })
+  }
 }
