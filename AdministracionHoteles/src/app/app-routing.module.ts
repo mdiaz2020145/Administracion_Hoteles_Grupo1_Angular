@@ -9,16 +9,37 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
+import { UsuarioGuard } from './services/usuario.guard';
+import { AdminGuard } from './services/admin.guard';
+import { InicoUsuarioComponent } from './components/inico-usuario/inico-usuario.component';
+import { InicoAdminComponent } from './components/inico-admin/inico-admin.component';
 
 const routes: Routes = [
-  { path: 'inicio', component: InicioComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'bienvenida', component: BienvenidaComponent },
-  { path: 'habitaciones/:idHotel', component: HabitacionesComponent },
-  { path: 'editar-perfil', component: EditarPerfilComponent },
   { path: 'registrar', component: RegistrarComponent },
-  { path: 'eventos/:idHotel', component: EventosComponent },
-  {path: 'servicios/:idHotel',component: ServiciosComponent}
+  {
+    path: "usuario", component: InicoUsuarioComponent, canActivate: [UsuarioGuard], children: [
+      { path: "bienvenida", component: BienvenidaComponent },
+      { path: "inicio", component: InicioComponent },
+      { path: 'habitaciones/:idHotel', component: HabitacionesComponent },
+      { path: 'editar-perfil', component: EditarPerfilComponent },
+      { path: 'eventos/:idHotel', component: EventosComponent },
+      { path: 'servicios/:idHotel', component: ServiciosComponent }
+    ]
+  },
+  {
+    path: "admin", component: InicoAdminComponent, canActivate: [AdminGuard], children: [
+      { path: "bienvenida", component: BienvenidaComponent },
+      { path: "inicio", component: InicioComponent },
+      { path: 'habitaciones/:idHotel', component: HabitacionesComponent },
+      { path: 'editar-perfil', component: EditarPerfilComponent },
+      { path: 'eventos/:idHotel', component: EventosComponent },
+      { path: 'servicios/:idHotel', component: ServiciosComponent }
+    ]
+  },
+  { path: "**", component: BienvenidaComponent }
+
+
 ];
 
 @NgModule({

@@ -17,6 +17,8 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { Buscar } from './components/pipes/buscar-hotel.pipe';
+import { InicoAdminComponent } from './components/inico-admin/inico-admin.component';
+import { InicoUsuarioComponent } from './components/inico-usuario/inico-usuario.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { Buscar } from './components/pipes/buscar-hotel.pipe';
     EditarPerfilComponent,
     RegistrarComponent,
     ServiciosComponent,
-    Buscar
+    Buscar,
+    InicoAdminComponent,
+    InicoUsuarioComponent
 
   ],
   imports: [

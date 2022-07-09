@@ -10,32 +10,25 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link" routerLinkActive="activate" routerLink="/bienvenida">Home</a></li>
-        <li><a class="nav-link scrollto" href="#login" routerLink="/login">Login</a></li>
-        <!--<li><a class="nav-link scrollto" href="#editarPerfil" routerLink="/editar-perfil">Perfil</a></li>-->
-        <li><a class="nav-link scrollto" href="#registrar" routerLink="/registrar">Registrar</a></li>
-        <!--<li><a class="nav-link scrollto" href="#about">About Us</a></li>
-        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-        <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-        <li><a class="nav-link scrollto" href="#team">Team</a></li>-->
-        <li class="dropdown"><a href="#"><span>Perfil</span> <i class="bi bi-chevron-down"></i></a>
+        <!-- redireccionamiento de usuario -->
+        <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" class="nav-link" routerLinkActive="activate" routerLink="/usuario/bienvenida">Home</a></li>
+        <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" class="nav-link" routerLinkActive="activate" routerLink="/usuario/inicio">Hoteles</a></li>
+
+        <!-- redireccionamiento de admin -->
+        <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" class="nav-link" routerLinkActive="activate"routerLink="/admin/bienvenida">Home</a></li>
+        <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" class="nav-link" routerLinkActive="activate"routerLink="/admin/inicio">Hoteles</a></li>
+
+        <li class="dropdown"><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'"><span>Perfil</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="#" routerLink="/editar-perfil">Editar perfil</a></li>
-            <li class="dropdown"><a href="/bienvenida" (click)="cerrarSesion()"><span>Cerrar sesion</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#" routerLink="/editar-perfil">Editar perfil</a></li>
-                <!--<li><a href="#">Cerrar sesion</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>-->
-              </ul>
+            <!-- usuario -->
+            <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" routerLink="/usuario/editar-perfil">Editar perfil</a></li>
+            <!-- admin -->
+            <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" routerLink="/admin/editar-perfil">Editar perfil</a></li>
+
+            <li class="dropdown"><a href="/login" (click)="cerrarSesion()"><span>Cerrar sesion</span> <i class="bi bi-chevron-right"></i></a>
             </li>
-            <!--<li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>-->
           </ul>
         </li>
-        <!--<li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>-->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

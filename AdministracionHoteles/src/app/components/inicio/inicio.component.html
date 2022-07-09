@@ -47,7 +47,7 @@
   </div>
 </section>
 
-  
+
 <div class="container  min-vh-100 py-4">
   <div class="row">
       <div class="col-md-5 mx-auto">
@@ -100,9 +100,14 @@ data-bs-toggle="modal" data-bs-target="#modalAgregar" >Agregar Hotel</button>
         </div>
         <div class="card-footer">
           <div style="width: 80%; background: transparent; margin: 5px auto; padding:1px ">
-            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-success"  [routerLink]="['/habitaciones', hotel._id]">Ver Habitaciones</button>
-            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-warning" [routerLink]="['/eventos', hotel._id]">Ver Eventos</button>
-            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-primary" [routerLink]="['/servicios', hotel._id]">Ver Servicios</button>
+              <!-- usuario -->
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-success" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'"  [routerLink]="['/usuario/habitaciones', hotel._id]">Ver Habitaciones</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-warning" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'"  [routerLink]="['/usuario/eventos', hotel._id]">Ver Eventos</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-primary" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'"  [routerLink]="['/usuario/servicios', hotel._id]">Ver Servicios</button>
+            <!-- admin -->
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-success" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/habitaciones', hotel._id]">Ver Habitaciones</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-warning" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/eventos', hotel._id]">Ver Eventos</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-primary" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/servicios', hotel._id]">Ver Servicios</button>
           </div>
         </div>
       </div>

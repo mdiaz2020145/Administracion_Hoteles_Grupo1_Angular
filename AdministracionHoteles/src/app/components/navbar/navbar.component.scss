@@ -2,8 +2,11 @@
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
+a{
+  text-decoration: none;
+}
 .navbar {
   padding: 0;
 }
@@ -92,7 +95,7 @@
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #fff;

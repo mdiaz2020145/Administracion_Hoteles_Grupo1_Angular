@@ -12,12 +12,12 @@
 <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
         <div class="container">
-  
+
           <div class="section-title">
             <h2>Nuestros servicios y sobre nosotros</h2>
             <p>Nosotros somos una empresa que facilita la transaccion y la reservacion de un hotel con sus servicios,habitaciones y eventos</p>
           </div>
-  
+
           <div class="row">
             <div class="col-lg-4 col-md-6 icon-box">
               <div class="icon"><i class="bi bi-cpu"></i></div>
@@ -50,7 +50,7 @@
               <p class="description">En nuesta pagina web podras visualizar diversad variedades de hoteles que estan situadas en distintas partes del mundo</p>
             </div>
           </div>
-  
+
         </div>
       </section><!-- End Services Section -->
 
@@ -61,7 +61,10 @@
       <div class="text-center">
         <h3>Visualiza nuestros hoteles</h3>
         <p>Al darle clic al boton podra visualizar los hoteles que tenemos disponibles en nuesta pagina web.</p>
-        <a class="cta-btn" href="#" routerLink="/inicio">clic aqui!</a>
+        <!-- usuario -->
+        <a class="cta-btn" href="#" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" routerLink="/usuario/inicio">clic aqui!</a>
+        <!-- admin -->
+        <a class="cta-btn" href="#" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" routerLink="/admin/inicio">clic aqui!</a>
       </div>
 
     </div>
@@ -216,7 +219,7 @@
           <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">A que se dedica la pagina? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
           <div id="faq1" class="collapse" data-bs-parent=".faq-list">
             <p>
-              Nosotros como grupo facilitamos el acceso para las reservaciones de los hoteles que guste visitar el usuario. 
+              Nosotros como grupo facilitamos el acceso para las reservaciones de los hoteles que guste visitar el usuario.
             </p>
           </div>
         </li>
@@ -234,7 +237,7 @@
           <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Cual es nuestra vision? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
           <div id="faq3" class="collapse" data-bs-parent=".faq-list">
             <p>
-              Nuestra vision es ser una de las grandes paginas de reservaciones de hoteles en todo el mundo. 
+              Nuestra vision es ser una de las grandes paginas de reservaciones de hoteles en todo el mundo.
             </p>
           </div>
         </li>
@@ -243,7 +246,7 @@
           <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Cuales son nuestras metas? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
           <div id="faq4" class="collapse" data-bs-parent=".faq-list">
             <p>
-              Nuestras metas son ser una gran empresa con un servicio eficiente de por medio para que el usuario tenga preferencia a nosotros. 
+              Nuestras metas son ser una gran empresa con un servicio eficiente de por medio para que el usuario tenga preferencia a nosotros.
             </p>
           </div>
         </li>
@@ -252,7 +255,7 @@
           <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Que buscamos facilitar? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
           <div id="faq5" class="collapse" data-bs-parent=".faq-list">
             <p>
-              La reservacion de hoteles con sus debidos servicios. 
+              La reservacion de hoteles con sus debidos servicios.
             </p>
           </div>
         </li>
