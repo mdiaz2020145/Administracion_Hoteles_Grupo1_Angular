@@ -61,10 +61,10 @@
       <div class="text-center">
         <h3>Visualiza nuestros hoteles</h3>
         <p>Al darle clic al boton podra visualizar los hoteles que tenemos disponibles en nuesta pagina web.</p>
-        <!-- usuario -->
-        <a class="cta-btn" href="#" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" routerLink="/usuario/inicio">clic aqui!</a>
-        <!-- admin -->
-        <a class="cta-btn" href="#" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" routerLink="/admin/inicio">clic aqui!</a>
+
+        <a *ngIf="redireccionamiento() === 0" class="cta-btn" href="#" routerLink="/inicio">clic aqui!</a>
+        <a *ngIf="redireccionamiento() === 1" class="cta-btn" href="#" routerLink="/usuario/inicio">clic aqui!</a>
+        <a *ngIf="redireccionamiento() === 2" class="cta-btn" href="#" routerLink="/admin/inicio">clic aqui!</a>
       </div>
 
     </div>

@@ -67,7 +67,7 @@
 
 <div class="container">
   <button type="button" class="btn btn-success my-3 "
-data-bs-toggle="modal" data-bs-target="#modalAgregar" >Agregar Hotel</button>
+data-bs-toggle="modal" data-bs-target="#modalAgregar" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _hotelesService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'">Agregar Hotel</button>
 </div>
 
 <section class="container" *ngIf="_hotelesService.obtenerHoteles()==undefined">
@@ -105,9 +105,9 @@ data-bs-toggle="modal" data-bs-target="#modalAgregar" >Agregar Hotel</button>
             <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-warning" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'"  [routerLink]="['/usuario/eventos', hotel._id]">Ver Eventos</button>
             <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-primary" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_USUARIO'"  [routerLink]="['/usuario/servicios', hotel._id]">Ver Servicios</button>
             <!-- admin -->
-            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-success" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/habitaciones', hotel._id]">Ver Habitaciones</button>
-            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-warning" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/eventos', hotel._id]">Ver Eventos</button>
-            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-primary" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/servicios', hotel._id]">Ver Servicios</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-success" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _hotelesService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/habitaciones', hotel._id]">Ver Habitaciones</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-warning" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _hotelesService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/eventos', hotel._id]">Ver Eventos</button>
+            <button  style="display:block; width: 75%; margin: 5px auto;"type="button" class="btn btn-primary" *ngIf="_hotelesService.obtenerIdentidad().rol === 'ROL_ADMIN' || _hotelesService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" [routerLink]="['/admin/servicios', hotel._id]">Ver Servicios</button>
           </div>
         </div>
       </div>

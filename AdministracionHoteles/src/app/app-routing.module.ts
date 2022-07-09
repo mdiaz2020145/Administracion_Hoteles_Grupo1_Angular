@@ -17,6 +17,7 @@ import { InicoAdminComponent } from './components/inico-admin/inico-admin.compon
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegistrarComponent },
+  { path: "inicio", component: InicioComponent },
   {
     path: "usuario", component: InicoUsuarioComponent, canActivate: [UsuarioGuard], children: [
       { path: "bienvenida", component: BienvenidaComponent },

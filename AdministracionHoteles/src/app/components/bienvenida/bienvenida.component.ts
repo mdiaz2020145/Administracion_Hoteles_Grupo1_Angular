@@ -14,4 +14,13 @@ export class BienvenidaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  redireccionamiento() {
+    if (this._usuarioService.obtenerIdentidad() == undefined) {
+      return 0;
+    } else if (this._usuarioService.obtenerIdentidad().rol === "ROL_USUARIO") {
+      return 1;
+    } else if (this._usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || this._usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN') {
+      return 2;
+    }
+  }
 }
