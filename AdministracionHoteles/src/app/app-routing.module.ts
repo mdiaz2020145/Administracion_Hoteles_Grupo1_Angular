@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'editar-perfil', component: EditarPerfilComponent },
       { path: 'eventos/:idHotel', component: EventosComponent },
       { path: 'servicios/:idHotel', component: ServiciosComponent },
-      { path: 'factura', component: FacturaComponent }
+      { path: 'factura/:idUsuario', component: FacturaComponent }
     ]
   },
   {

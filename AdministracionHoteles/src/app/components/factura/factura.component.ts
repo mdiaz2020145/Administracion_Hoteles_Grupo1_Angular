@@ -6,7 +6,8 @@ import { Factura } from 'src/app/models/factura.model';
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
-  styleUrls: ['./factura.component.scss']
+  styleUrls: ['./factura.component.scss'],
+  providers: [FacturaService]
 })
 export class FacturaComponent implements OnInit {
 
@@ -30,6 +31,7 @@ export class FacturaComponent implements OnInit {
         [{idServicio:''}],
         0,0,0,0,""
         )
+      this.token=_facturaServices.obtenerToken()
    }
 
   ngOnInit(): void {
@@ -41,11 +43,12 @@ export class FacturaComponent implements OnInit {
     })
   }
 
-  getFactura(idUsuario: any) {
+  getFactura(idUsuario) {
     console.log(idUsuario)
     this._facturaServices.obtenerFactura(idUsuario,this.token).subscribe(
-      response => {
-        if (response.factura == 0) {
+      (response) => {
+        console.log("Esto contiene el response "+response)
+        if (response.factura==0) {
           console.log("datos vacios")
           this.facturaModelGet = response.factura
           this.validation = false;
@@ -56,7 +59,8 @@ export class FacturaComponent implements OnInit {
         }
         console.log(this.facturaModelGet)
       },
-      error => {
+      (error) => {
+
         console.log(<any>error)
       }
 

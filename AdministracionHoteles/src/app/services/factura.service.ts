@@ -9,14 +9,16 @@ import { Observable } from 'rxjs';
 export class FacturaService {
   public url: String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
-  public identidad;
-  public token;
+  public identidad: any;
+  public token: any;
+
 
   constructor(public _http:HttpClient) { }
 
   generarFactura(modeloFactura: Factura, token:any): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
-    return this._http.post(this.url + '/generarFacutra', { headers: headersToken  })
+    let parametros = JSON.stringify(modeloFactura)
+    return this._http.post(this.url + '/generarFacutra',parametros, { headers: headersToken  })
   }
 
   obtenerFactura(idUsuario: String, token:any): Observable<any> {
