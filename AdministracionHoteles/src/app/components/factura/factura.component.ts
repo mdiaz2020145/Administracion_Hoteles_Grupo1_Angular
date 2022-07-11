@@ -14,7 +14,7 @@ export class FacturaComponent implements OnInit {
   facturaModelPost: Factura
   public token: any;
   public validation: Boolean = true;
-  public idUsuario: String;
+  public idUsuario: any;
 
   constructor(public _facturaServices: FacturaService, public _activatedRoute: ActivatedRoute) {
     this.facturaModelGet = new Factura(
@@ -36,14 +36,14 @@ export class FacturaComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
       console.log(dataRuta.get("idUsuario"))
       this.getFactura(dataRuta.get("idUsuario"))
-      this.generarFactura()
+      //this.generarFactura()
       this.idUsuario = dataRuta.get("idUsuario")
     })
   }
 
   getFactura(idUsuario: any) {
     console.log(idUsuario)
-    this._facturaServices.obtenerFactura(idUsuario, this.token).subscribe(
+    this._facturaServices.obtenerFactura(idUsuario,this.token).subscribe(
       response => {
         if (response.factura == 0) {
           console.log("datos vacios")
