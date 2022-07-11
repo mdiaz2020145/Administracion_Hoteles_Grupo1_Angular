@@ -75,4 +75,11 @@ export class UsuariosService {
     let headersToken = this.headersVariable.set('Authorization', token)
     return this._http.delete(this.url + '/eliminarUsuario/' + id, { headers: headersToken })
   }
+
+  generarFactura(modeloUsuario: Usuarios): Observable<any> {
+    let parametros = JSON.stringify(modeloUsuario);
+    return this._http.post(this.url + '/generarFacutra', parametros, { headers: this.headersVariable })
+  }
+
+
 }

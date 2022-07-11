@@ -22,6 +22,7 @@
           <ul>
             <!-- usuario -->
             <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" routerLink="/usuario/editar-perfil">Editar perfil</a></li>
+            <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_USUARIO'" routerLink="/usuario/factura" >Generar factura</a></li>
             <!-- admin -->
             <li><a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMIN' || _usuarioService.obtenerIdentidad().rol === 'ROL_SUPERADMIN'" routerLink="/admin/editar-perfil">Editar perfil</a></li>
 

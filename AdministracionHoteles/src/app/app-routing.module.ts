@@ -13,6 +13,7 @@ import { UsuarioGuard } from './services/usuario.guard';
 import { AdminGuard } from './services/admin.guard';
 import { InicoUsuarioComponent } from './components/inico-usuario/inico-usuario.component';
 import { InicoAdminComponent } from './components/inico-admin/inico-admin.component';
+import { FacturaComponent } from './components/factura/factura.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'habitaciones/:idHotel', component: HabitacionesComponent },
       { path: 'editar-perfil', component: EditarPerfilComponent },
       { path: 'eventos/:idHotel', component: EventosComponent },
-      { path: 'servicios/:idHotel', component: ServiciosComponent }
+      { path: 'servicios/:idHotel', component: ServiciosComponent },
+      { path: 'factura', component: FacturaComponent }
     ]
   },
   {

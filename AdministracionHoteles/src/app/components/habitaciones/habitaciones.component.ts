@@ -104,7 +104,7 @@ export class HabitacionesComponent implements OnInit {
       error=>{
         console.log(<any>error)
       }
-      
+
     )
   }
 

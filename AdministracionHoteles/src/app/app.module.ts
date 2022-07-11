@@ -19,6 +19,7 @@ import { ServiciosComponent } from './components/servicios/servicios.component';
 import { Buscar } from './components/pipes/buscar-hotel.pipe';
 import { InicoAdminComponent } from './components/inico-admin/inico-admin.component';
 import { InicoUsuarioComponent } from './components/inico-usuario/inico-usuario.component';
+import { FacturaComponent } from './components/factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InicoUsuarioComponent } from './components/inico-usuario/inico-usuario.
     ServiciosComponent,
     Buscar,
     InicoAdminComponent,
-    InicoUsuarioComponent
+    InicoUsuarioComponent,
+    FacturaComponent
 
   ],
   imports: [
