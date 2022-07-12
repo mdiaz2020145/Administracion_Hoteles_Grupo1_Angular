@@ -50,7 +50,7 @@ export class FacturaComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
       console.log(dataRuta.get("idUsuario"))
       this.getFactura(dataRuta.get("idUsuario"))
-      //this.generarFactura()
+      // this.generarFactura()
       this.idUsuario = dataRuta.get("idUsuario")
     })
     this.datosFactura()
@@ -81,10 +81,12 @@ export class FacturaComponent implements OnInit {
       next: (res) => {
         if (res.factura == 0) {
           console.log("datos vacios")
+          this.validation = false
         } else {
           this.total = res.factura
           console.log("akjsdflña" + res.factura)
           console.log("total" + this.total)
+          this.validation = true
         }
       },
       error: (err) => {

@@ -1,4 +1,4 @@
-<section>
+<section class="container" *ngIf="validation===true">
 <table id="TablaFactura" class="table container direccionTabla">
   <thead>
     <tr>
@@ -27,4 +27,12 @@
       </tr>
     </tfoot>
 </table>
+<button (click)="generarFactura()" class="btn btn-success mt-3"> Generar Factura</button>
+</section>
+<section class="container mb-5 direccionTabla" *ngIf="validation===false">
+  <div class="alert alert-warning text-center" role="alert">
+    <h4 class="alert-heading">¡Lo sentimos!</h4>
+    <p>Al parecer no hay factura que visualizar en este momento, ¡Por favor revisa mas tarde!</p>
+    <hr>
+  </div>
 </section>
