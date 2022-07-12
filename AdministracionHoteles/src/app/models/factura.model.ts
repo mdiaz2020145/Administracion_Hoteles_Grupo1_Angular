@@ -1,12 +1,15 @@
 export class Factura{
   constructor(
    public reservacion:[{
+    numeroDeHabitacion: String,
       idHabitacion:String
   }],
    public reservacionEvento:[{
+    nombreEvento: String,
     idEvento:String
   }],
    public reservacionServicio:[{
+    nombreServicio:String,
     idServicio:String
   }],
  public totalHabitacion:Number,

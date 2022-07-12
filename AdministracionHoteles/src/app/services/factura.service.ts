@@ -26,6 +26,11 @@ export class FacturaService {
     return this._http.get(this.url + '/obtenerFacturaUsuario/' +idUsuario, { headers: headersToken })
   }
 
+  /*obtenerFacturaID(idFactura:String,token:any):Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization', token)
+    return this._http.get(this.url + '//')
+  }*/
+
   obtenerToken() {
     var token2 = localStorage.getItem('token');
     if (token2 != undefined) {

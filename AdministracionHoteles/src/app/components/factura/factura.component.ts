@@ -30,16 +30,16 @@ export class FacturaComponent implements OnInit {
     public _usuarioService: UsuariosService, public _habitacionService: HabitacionesService,
     public _serviciosService: ServiciosService, public _eventosService: EventosService) {
     this.facturaModelGet = new Factura(
-      [{ idHabitacion: '' }],
-      [{ idEvento: '' }],
-      [{ idServicio: '' }],
+      [{ numeroDeHabitacion:'' ,idHabitacion: '' }],
+      [{nombreEvento:'' ,idEvento: '' }],
+      [{nombreServicio:'', idServicio: '' }],
       0, 0, 0, 0, ""
     )
 
     this.facturaModelPost = new Factura(
-      [{ idHabitacion: '' }],
-      [{ idEvento: '' }],
-      [{ idServicio: '' }],
+      [{numeroDeHabitacion:'' , idHabitacion: '' }],
+      [{nombreEvento:'' , idEvento: '' }],
+      [{nombreServicio:'', idServicio: '' }],
       0, 0, 0, 0, ""
     )
     this.token = _facturaServices.obtenerToken()
