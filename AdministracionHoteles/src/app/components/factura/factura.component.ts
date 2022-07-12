@@ -31,16 +31,16 @@ export class FacturaComponent implements OnInit {
     public _usuarioService: UsuariosService, public _habitacionService: HabitacionesService,
     public _serviciosService: ServiciosService, public _eventosService: EventosService) {
     this.facturaModelGet = new Factura(
-      [{ numeroDeHabitacion:'' ,idHabitacion: '' }],
-      [{nombreEvento:'' ,idEvento: '' }],
-      [{nombreServicio:'', idServicio: '' }],
+      [{ numeroDeHabitacion: '', idHabitacion: '' }],
+      [{ nombreEvento: '', idEvento: '' }],
+      [{ nombreServicio: '', idServicio: '' }],
       0, 0, 0, 0, ""
     )
 
     this.facturaModelPost = new Factura(
-      [{numeroDeHabitacion:'' , idHabitacion: '' }],
-      [{nombreEvento:'' , idEvento: '' }],
-      [{nombreServicio:'', idServicio: '' }],
+      [{ numeroDeHabitacion: '', idHabitacion: '' }],
+      [{ nombreEvento: '', idEvento: '' }],
+      [{ nombreServicio: '', idServicio: '' }],
       0, 0, 0, 0, ""
     )
     this.token = _facturaServices.obtenerToken()
@@ -54,6 +54,7 @@ export class FacturaComponent implements OnInit {
       this.idUsuario = dataRuta.get("idUsuario")
     })
     this.datosFactura()
+    this.obtenerTotal()
   }
 
   datosFactura() {
@@ -63,11 +64,28 @@ export class FacturaComponent implements OnInit {
           console.log("datos vacios")
         } else {
         }
-      this.listaHabitacion = JSON.parse(JSON.stringify(res.usuario.reservacionHabitacion))
-      this.listaEvento = JSON.parse(JSON.stringify(res.usuario.reservacionEvento))
-      this.listaServicio = JSON.parse(JSON.stringify(res.usuario.reservacionServicio))
-      this.total = JSON.stringify(res.usuario.total)
-      console.log(this.total)
+        this.listaHabitacion = JSON.parse(JSON.stringify(res.usuario.reservacionHabitacion))
+        this.listaEvento = JSON.parse(JSON.stringify(res.usuario.reservacionEvento))
+        this.listaServicio = JSON.parse(JSON.stringify(res.usuario.reservacionServicio))
+        this.total = JSON.parse(JSON.stringify(res.usuario))
+        console.log("total" + this.total)
+      },
+      error: (err) => {
+        console.log(<any>err)
+      }
+    })
+  }
+
+  obtenerTotal() {
+    this._facturaServices.obtenerTotal(this.token).subscribe({
+      next: (res) => {
+        if (res.factura == 0) {
+          console.log("datos vacios")
+        } else {
+          this.total = res.factura
+          console.log("akjsdflña" + res.factura)
+          console.log("total" + this.total)
+        }
       },
       error: (err) => {
         console.log(<any>err)

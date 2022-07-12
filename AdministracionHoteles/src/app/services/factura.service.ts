@@ -13,23 +13,23 @@ export class FacturaService {
   public token: any;
 
 
-  constructor(public _http:HttpClient) { }
+  constructor(public _http: HttpClient) { }
 
-  generarFactura(modeloFactura: Factura, token:any): Observable<any> {
+  generarFactura(modeloFactura: Factura, token: any): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
     let parametros = JSON.stringify(modeloFactura)
-    return this._http.post(this.url + '/generarFacutra',parametros, { headers: headersToken  })
+    return this._http.post(this.url + '/generarFacutra', parametros, { headers: headersToken })
   }
 
-  obtenerFactura(idUsuario: String, token:any): Observable<any> {
+  obtenerFactura(idUsuario: String, token: any): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
-    return this._http.get(this.url + '/obtenerFacturaUsuario/' +idUsuario, { headers: headersToken })
+    return this._http.get(this.url + '/obtenerFacturaUsuario/' + idUsuario, { headers: headersToken })
   }
 
-  /*obtenerFacturaID(idFactura:String,token:any):Observable<any>{
+  obtenerTotal(token: any): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
-    return this._http.get(this.url + '//')
-  }*/
+    return this._http.get(this.url + '/obtenerTotal', { headers: headersToken })
+  }
 
   obtenerToken() {
     var token2 = localStorage.getItem('token');
