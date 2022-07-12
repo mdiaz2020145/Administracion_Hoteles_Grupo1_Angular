@@ -60,11 +60,11 @@ export class FacturaComponent implements OnInit {
       next: (res) => {
         if (res.usuario == 0) {
           console.log("datos vacios")
-        } else {
-          this.listaHabitacion = JSON.parse(JSON.stringify(res.usuario.reservacionHabitacion))
-          this.listaEvento = JSON.parse(JSON.stringify(res.usuario.reservacionEvento))
-          this.listaServicio = JSON.parse(JSON.stringify(res.usuario.reservacionServicio))
+        } else {  
         }
+      this.listaHabitacion = JSON.parse(JSON.stringify(res.usuario.reservacionHabitacion))
+      this.listaEvento = JSON.parse(JSON.stringify(res.usuario.reservacionEvento))
+      this.listaServicio = JSON.parse(JSON.stringify(res.usuario.reservacionServicio))
       },
       error: (err) => {
         console.log(<any>err)

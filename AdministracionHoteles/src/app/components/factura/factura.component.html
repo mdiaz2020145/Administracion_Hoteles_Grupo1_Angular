@@ -1,4 +1,4 @@
-<table class="table caption-top direccionTabla">
+<!--<table class="table caption-top direccionTabla">
   <caption>{{_facturaServices.obtenerIdentidad().nombre}}</caption>
   <thead>
     <tr>
@@ -7,15 +7,37 @@
       <th scope="col">Servicios</th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let habitaciones of listaHabitacion">
-      <td >{{habitaciones.idHabitacion}}</td>
+  <tbody *ngFor="let habitaciones of listaHabitacion">
+    <tr>
+      <td >{{habitaciones.numeroDeHabitacion}}</td>
     </tr>
     <tr *ngFor="let evento of listaEvento">
-      <td >{{evento.idEvento}}</td>
+      <td >{{evento.nombreEvento}}</td>
     </tr>
     <tr *ngFor="let servicio of listaServicio">
-      <td >{{servicio.idServicio}}</td>
+      <td >{{servicio.nombreServicio}}</td>
+    </tr>
+  </tbody>
+</table>-->
+
+<table class="table container direccionTabla" >
+  <thead>
+    <tr>
+      <th scope="col">Habitaciones</th>
+      <th scope="col">Eventos</th>
+      <th scope="col">Servicios</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <tr *ngFor="let habitaciones of listaHabitacion">
+      <td >{{habitaciones.numeroDeHabitacion}}</td>
+    </tr>
+    <tr *ngFor="let evento of listaEvento">
+      <td>{{evento.nombreEvento}}</td>
+    </tr>
+    <tr *ngFor="let servicio of listaServicio">
+      <td colspan="2">{{servicio.nombreServicio}}</td>
     </tr>
   </tbody>
 </table>
