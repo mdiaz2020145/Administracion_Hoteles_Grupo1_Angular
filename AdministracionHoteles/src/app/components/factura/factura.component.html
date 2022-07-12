@@ -1,31 +1,21 @@
-<table class="table caption-top">
-  <caption>List of users</caption>
+<table class="table caption-top direccionTabla">
+  <caption>{{_facturaServices.obtenerIdentidad().nombre}}</caption>
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Habitacion</th>
+      <th scope="col">Eventos</th>
+      <th scope="col">Servicios</th>
     </tr>
   </thead>
   <tbody>
-    <tr >
-      <th scope="row" >1</th>
-      <td> si</td>
-      <td>Marcelo Gay</td>
-      <td>@mdo</td>
+    <tr *ngFor="let habitaciones of listaHabitacion">
+      <td >{{obtenerHabitacionNombre(habitaciones.idHabitacion)}}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <!-- <tr *ngFor="let evento of listaEvento">
+      <td >{{obtenerEventoNombre(evento.idEvento)}}</td>
+    </tr> -->
+    <!-- <tr *ngFor="let servicio of listaServicio">
+      <td >{{obtenerServicioNombre(servicio.idServicio)}}</td>
+    </tr> -->
   </tbody>
 </table>
