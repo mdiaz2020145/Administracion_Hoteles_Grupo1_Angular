@@ -25,6 +25,7 @@ export class FacturaComponent implements OnInit {
   public listaHabitacion: any;
   public listaEvento: any;
   public listaServicio: any;
+  public total: any;
 
   constructor(public _facturaServices: FacturaService, public _activatedRoute: ActivatedRoute,
     public _usuarioService: UsuariosService, public _habitacionService: HabitacionesService,
@@ -60,11 +61,13 @@ export class FacturaComponent implements OnInit {
       next: (res) => {
         if (res.usuario == 0) {
           console.log("datos vacios")
-        } else {  
+        } else {
         }
       this.listaHabitacion = JSON.parse(JSON.stringify(res.usuario.reservacionHabitacion))
       this.listaEvento = JSON.parse(JSON.stringify(res.usuario.reservacionEvento))
       this.listaServicio = JSON.parse(JSON.stringify(res.usuario.reservacionServicio))
+      this.total = JSON.stringify(res.usuario.total)
+      console.log(this.total)
       },
       error: (err) => {
         console.log(<any>err)

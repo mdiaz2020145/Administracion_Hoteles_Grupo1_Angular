@@ -1,5 +1,5 @@
 <section>
-<table class="table container direccionTabla">
+<table id="TablaFactura" class="table container direccionTabla">
   <thead>
     <tr>
       <th scope="col" >Habitacion</th>
@@ -16,5 +16,15 @@
     <td >
       <tr scope="row" *ngFor="let servicio of listaServicio">{{servicio.nombreServicio}}</tr>
     </td>
+    <tfoot>
+      <tr>
+        <td colspan="2">
+           Total:
+        </td>
+        <td>
+          <tr scope="row" *ngFor="let total of facturaModelGet">{{total.total}}</tr>
+        </td>
+      </tr>
+    </tfoot>
 </table>
 </section>
